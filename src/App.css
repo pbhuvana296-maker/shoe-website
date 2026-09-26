@@ -1,0 +1,226 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.body-wrapper {
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.product-container {
+    background: #ffffff;
+    max-width: 1100px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+/* Left Grid Content Panels */
+.product-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 15px;
+}
+
+.product-description {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.product-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 25px;
+}
+
+.section-container {
+    margin-bottom: 25px;
+}
+
+.section-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.highlight-text {
+    color: #111;
+    text-transform: none;
+}
+
+.options-flex {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* Selector Button Classes */
+.color-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: transform 0.2s ease;
+}
+
+.color-btn:hover {
+    transform: scale(1.1);
+}
+
+.color-btn.active {
+    border-color: #111;
+}
+
+.checkmark {
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.color-btn.white-variant .checkmark {
+    color: #111111;
+}
+
+.size-btn {
+    width: 45px;
+    height: 45px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: #333333;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.size-btn:hover {
+    border-color: #111;
+}
+
+.size-btn.active {
+    background-color: #111111;
+    color: #ffffff;
+    border-color: #111111;
+}
+
+.add-btn {
+    background: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 18px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 100%;
+    max-width: 350px;
+    margin-top: 10px;
+    transition: background 0.2s ease;
+}
+
+.add-btn:hover {
+    background: #222222;
+}
+
+/* Right Media Showcase & Slideshow */
+.product-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.main-image-container {
+    width: 100%;
+    max-width: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.thumbnail-container {
+    display: flex;
+    gap: 15px;
+}
+
+.thumbnail-card {
+    width: 70px;
+    height: 70px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 5px;
+    cursor: pointer;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.thumbnail-card:hover {
+    border-color: #999;
+}
+
+.thumbnail-card.active {
+    border-color: #111;
+    box-shadow: 0 0 0 1px #111;
+}
+
+.thumb-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Mobile Media Viewport Updates */
+@media (max-width: 768px) {
+    .product-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 20px;
+    }
+    .add-btn {
+        max-width: 100%;
+    }
+}
