@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./App.css";
 
-import back from "./assets/images/back.png";
-import fornt from "./assets/images/fornt.png";
-import left from "./assets/images/left.png";
 import hero from "./assets/images/hero.png";
+import left from "./assets/images/left.png";
+import back from "./assets/images/back.png";
+import right from "./assets/images/right.png";
 
 const PRODUCT_DATA = {
   title: "Sport Shoe",
@@ -17,22 +17,42 @@ const PRODUCT_DATA = {
   price: "₹2,999",
 
   images: [
-    fornt,
+    hero,
     left,
     back,
-    hero,
+    right,
+  ],
+
+  imageNames: [
+    "Front View",
+    "Left View",
+    "Back View",
+    "Right View",
   ],
 };
 
 export default function App() {
-  const [activeImageIndex, setActiveImageIndex] =
-    useState(0);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
 
-  const [selectedSize, setSelectedSize] =
-    useState(null);
+  const [selectedSize, setSelectedSize] = useState(null);
+
+  const [slideDirection, setSlideDirection] =
+    useState("slide-left");
 
   const currentMainImage =
     PRODUCT_DATA.images[activeImageIndex];
+
+  const handleImageChange = (index) => {
+    if (index === activeImageIndex) return;
+
+    if (index > activeImageIndex) {
+      setSlideDirection("slide-left");
+    } else {
+      setSlideDirection("slide-right");
+    }
+
+    setActiveImageIndex(index);
+  };
 
   const handleAddToBag = () => {
     if (!selectedSize) {
@@ -69,7 +89,9 @@ export default function App() {
           </div>
 
 
-          {/* SIZE SELECTION */}
+          {/* =========================
+              SIZE SELECTION
+          ========================== */}
 
           <div className="section-container">
 
@@ -105,7 +127,9 @@ export default function App() {
           </div>
 
 
-          {/* ADD TO BAG */}
+          {/* =========================
+              ADD TO BAG
+          ========================== */}
 
           <button
             className="add-btn"
@@ -123,20 +147,29 @@ export default function App() {
 
         <div className="product-gallery">
 
-          {/* MAIN IMAGE */}
+          {/* =========================
+              MAIN IMAGE
+          ========================== */}
 
           <div className="main-image-container">
 
             <img
+              key={activeImageIndex}
               src={currentMainImage}
-              alt="Sport Shoe"
-              className="main-image"
+              alt={
+                PRODUCT_DATA.imageNames[
+                  activeImageIndex
+                ]
+              }
+              className={`main-image ${slideDirection}`}
             />
 
           </div>
 
 
-          {/* 4 IMAGE THUMBNAILS */}
+          {/* =========================
+              4 THUMBNAILS
+          ========================== */}
 
           <div className="thumbnail-container">
 
@@ -153,15 +186,17 @@ export default function App() {
                       isActive ? "active" : ""
                     }`}
                     onClick={() =>
-                      setActiveImageIndex(index)
+                      handleImageChange(index)
                     }
                   >
 
                     <img
                       src={imgUrl}
-                      alt={`Sport Shoe View ${
-                        index + 1
-                      }`}
+                      alt={
+                        PRODUCT_DATA.imageNames[
+                          index
+                        ]
+                      }
                       className="thumb-img"
                     />
 
